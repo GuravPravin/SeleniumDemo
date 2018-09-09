@@ -1,0 +1,140 @@
+First Day: Selenium eclipse with java setup
+
+Steps1: add below line in 'eclipse config' file under eclipse folder (for java)
+-vm
+C:\Program Files\Java\jdk1.8.0_162\bin\javaw.exe
+
+Steps2:
+Window -> eclipse marketplace -> Install TestNG
+
+Steps3:
+Right click on project name -> New -> Other -> type TestNG -> Next -> Select Testng annotation(beforetest annotation)
+Give Package name and class name -> Finish (do code)
+
+Steps4: selenium code for grid
+
+for upload file 
+there are two ways
+robot class and AutoIT
+
+Grid Setup:
+steps1: download seleniumstandalone.jar file from net
+steps2: paste jar home directory
+Steps3: open cmd and goto path where seleniumstandalone jar is present
+steps4: type 'java -jar selenium-server-standalone-2.53.0.jar -role hub -port 5656'
+
+Result: Selenium Grid hub is up and running.
+
+Steps5:
+Open another cmd prompt: type below cmd for Node
+
+java -Dwebdriver.chrome.driver="C:\Users\pdc2b-training.pdc2b\Desktop\drivers\chromedriver.exe" -jar selenium-server-standalone-2.53.0.jar -role webdriver -hub http://192.168.56.1:5656/grid/register -port 4343
+
+Result: The Node is registered to the hub and ready to use 
+
+Steps6: open chrome browser and type below cmd
+http://localhost:4343/wd/hub      (4343 is node port no)
+
+Steps7: Selenium code for grid
+
+Steps8: if you want to run scrip another machine then simply change below code in eclipse
+
+ d = new RemoteWebDriver(new URL("http://10.206.241.232:4347/wd/hub"),dc);
+ //simply add IP address and port of node of another machine (Node)
+ //precondition: Another machine should be run node command on their command prompt.
+
+
+Read data from excel sheet
+steps1: first add dependancy in pom.xml file (copy paste dependancy from https://mvnrepository.com/artifact/org.apache.poi/poi/3.9)
+steps2: develop code for the same.
+
+
+
+
+http://192.168.56.1:4343/wd/hub 
+
+
+Lalit
+10.206.241.232
+java -Dwebdriver.chrome.driver="C:\Users\pdc2b-training.pdc2b\Desktop\drivers\chromedriver.exe" -jar selenium-server-standalone-2.53.0.jar -role webdriver -hub http://10.206.241.232:5656/grid/register -port 4343
+
+java -Dwebdriver.chrome.driver="C:\Users\pdc2b-training.pdc2b\Desktop\drivers\chromedriver.exe" -jar selenium-server-standalone-2.53.0.jar -role webdriver -hub http://192.168.56.1:5656/grid/register -port 4340
+
+
+Day 2: 
+Task: GitHub
+
+1: Create account on github site
+2: Create new folder in local C: drive 
+3: right click on project -> Team -> shared
+4: Right clikc on project -> Team -> commit and push (code)
+5: Drag n drop file and click on push and commit button
+6: for invitation friends go to setting in github -> collaborates and search friend - > click on 'add collaborator' button.
+
+Task: POM Framework
+1: Create POM framework
+2: Create 3 packages under POMFramework project
+	com.accenture.pages
+		HomePage.java
+		LoginPage.java
+	com.accenture.tests
+		LoginTest.java
+		MyTest.java
+	com.accenture.utilities
+		MyListener.java
+
+Task: Listener
+1: Create MyListener.java under com.accenture.utilities package (Create suite.xml file also)
+2: Create suite.xml file under com.accenture.utilities package while creating MyListener.java 
+3: Write code for MyListener class
+4: Modify suite.xml file as below
+	//Add listener and Test tag and call MyListener class 
+	e.g. //below code for suite.xml file
+	<listeners>
+	<listener class-name="com.accenture.utilities.MyListener">
+	</listener> </listeners>
+	And
+	<test name="Test01">
+    <classes>
+      <class name="com.accenture.tests.MyTest"/>
+    </classes>
+    </test> <!-- Test -->
+	
+	//Note: We can add multiple test
+	
+	
+Task: Extent Report
+1: add Dependency in pom.xml for extent report
+2: Modify MyListener.java class
+3: update version 2.10 for extent report in POM.xml
+
+
+
+Task: Cucumber Framework
+1: update 2 dependancy in pom.xml
+
+<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-java</artifactId>
+			<version>1.2.5</version>
+		</dependency>
+
+		<!-- These are the cucumber-junit dependencies -->
+		<dependency>
+			<groupId>info.cukes</groupId>
+			<artifactId>cucumber-junit</artifactId>
+			<version>1.2.5</version>
+		</dependency>
+
+2: Create LoginTest.feature file and write scenarios 
+3: Create Runner class (New -> Junit Test case -> Runner.java)
+
+
+
+
+
+
+
+
+
+
